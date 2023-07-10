@@ -1,4 +1,23 @@
-const {listMovies, listShowingMovies} = require("./movies.service")
+const {listMovies, listShowingMovies, readMovie} = require("./movies.service")
+
+async function checkIfMovieExists(req,res,next){
+    const {movieId} = req.params
+    const data = await readMovie(movieId)
+    if(data){
+        res.locals.movieId = movieId;
+        res.locals.movie = data
+        next();
+    }else{
+        next({
+            status: 404,
+            message: `Movie cannot be found with ID ${movieId}`
+        })
+    }
+}
+
+function read(req,res,_next){
+    res.send({data: res.locals.movie})
+}
 
 async function list(req,res,_next){
     const {is_showing} = req.query;
@@ -14,4 +33,5 @@ async function list(req,res,_next){
 
 module.exports = {
     list,
+    read: [checkIfMovieExists, read]
 }
