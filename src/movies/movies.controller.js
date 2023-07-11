@@ -38,10 +38,10 @@ async function list(req, res, _next) {
   const { is_showing } = req.query;
   if (is_showing === "true") {
     const data = await listShowingMovies();
-    res.send({ data });
+    res.json({ data });
   } else {
     const data = await listMovies();
-    res.send({ data });
+    res.json({ data });
   }
 }
 
