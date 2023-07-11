@@ -6,7 +6,9 @@ const theatersRouter = require("./theaters/theaters.router")
 const notFound = require("./errors/notFound");
 const errorHandler = require("./errors/errorHandler");
 const app = express();
+const cors = require("cors")
 app.use(express.json());
+app.use(cors())
 
 app.use("/movies", movieRouter);
 app.use("/reviews", reviewRouter);
