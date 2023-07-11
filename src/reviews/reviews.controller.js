@@ -19,7 +19,7 @@ async function checkIfReviewExists(req,res,next){
 
 async function destroy(_req,res,_next){
     const data = await deleteReview(res.locals.reviewId); 
-    res.status(204).send({data})
+    res.status(204).json({data})
 }
 
 async function update(req,res,_next){
@@ -29,7 +29,7 @@ async function update(req,res,_next){
         review_id: res.locals.reviewId,
       }
       const data = await updateReview(updatedReview)
-      res.send({data})
+      res.json({data})
 }
 
 module.exports = {

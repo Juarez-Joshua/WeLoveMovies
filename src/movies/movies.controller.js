@@ -23,15 +23,15 @@ async function checkIfMovieExists(req, res, next) {
 
 async function getReviewsForMovie(_req,res,_next){
     const data = await movieReviews(res.locals.movieId);
-    res.send({data});
+    res.json({data});
 }
 async function getTheatresForMovie(_req, res, _next) {
   const data = await findTheatersForMovie(res.locals.movieId);
-  res.send({data})
+  res.json({data})
 }
 
 function read(_req, res, _next) {
-  res.send({ data: res.locals.movie });
+  res.json({ data: res.locals.movie });
 }
 
 async function list(req, res, _next) {
