@@ -27,7 +27,7 @@ async function update(req,res,_next){
         ...res.locals.review,
         ...req.body.data,
         review_id: res.locals.reviewId,
-      };
+      }
       const data = await updateReview(updatedReview)
       res.send({data})
 }
