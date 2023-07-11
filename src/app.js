@@ -5,11 +5,12 @@ const reviewRouter = require("./reviews/reviews.router")
 const notFound = require("./errors/notFound");
 const errorHandler = require("./errors/errorHandler");
 const app = express();
+app.use(express.json());
 
 app.use("/movies", movieRouter);
-app.use("/reviews", reviewRouter)
+app.use("/reviews", reviewRouter);
 
-app.use(notFound)
+app.use(notFound);
 app.use(errorHandler);
 
 module.exports = app;

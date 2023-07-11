@@ -21,16 +21,16 @@ async function checkIfMovieExists(req, res, next) {
   }
 }
 
-async function getReviewsForMovie(req,res,_next){
+async function getReviewsForMovie(_req,res,_next){
     const data = await movieReviews(res.locals.movieId);
     res.send({data});
 }
-async function getTheatresForMovie(req, res, _next) {
+async function getTheatresForMovie(_req, res, _next) {
   const data = await findTheatersForMovie(res.locals.movieId);
   res.send({data})
 }
 
-function read(req, res, _next) {
+function read(_req, res, _next) {
   res.send({ data: res.locals.movie });
 }
 

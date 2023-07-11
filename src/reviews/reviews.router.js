@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const methodNotAllowed = require("../errors/methodNotAllowed");
-const {destroy} = require("./reviews.controller")
+const {destroy, update} = require("./reviews.controller")
 
-router.route("/:reviewId").delete(destroy).all(methodNotAllowed)
+router.route("/:reviewId").delete(destroy).put(update).all(methodNotAllowed)
 
 module.exports = router;
